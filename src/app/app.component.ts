@@ -8,7 +8,7 @@ declare var google: any;
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements AfterViewInit {
-
+token:any;
   constructor() { }
 
   ngAfterViewInit(): void {
@@ -25,6 +25,8 @@ export class AppComponent implements AfterViewInit {
   handleGoogleSignIn(response: any) {
     console.log(response.credential);
 
+    this.token=response.credential;
+    alert(response.credential)
     // This next is for decoding the idToken to an object if you want to see the details.
     let base64Url = response.credential.split('.')[1];
     let base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
